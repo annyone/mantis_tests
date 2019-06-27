@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mantis_tests
 {
-    class AccountData
+    public class AccountData
     {
         public string Name { get; set; }
 
