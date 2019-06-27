@@ -49,7 +49,7 @@ namespace mantis_tests
 
         private void OpenRegistrationForm()
         {
-            driver.FindElements(By.CssSelector("span.bracket-link"))[0].Click();
+            driver.FindElements(By.XPath("//a[@href='signup_page.php']")).Click();
         }
 
         private void FillRegistrationForm(AccountData account)
