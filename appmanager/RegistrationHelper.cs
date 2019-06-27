@@ -21,7 +21,7 @@ namespace mantis_tests
             FillRegistrationForm(account);
             SubmitRegistration();
             string url = GetConfirmationUrl(account);
-            FillPasswordForm(url);
+            FillPasswordForm(url, account);
             SubmitPasswordForm();
         }
 
@@ -32,14 +32,18 @@ namespace mantis_tests
             return match.Value;
         }
 
-        private void FillPasswordForm(string url)
+        private void FillPasswordForm(string url, AccountData account)
         {
-            throw new NotImplementedException();
+            driver.Url = url;
+            driver.FindElement(By.Id("realname")).SendKeys(account.Name);
+            driver.FindElement(By.Id("password")).SendKeys(account.Password);
+            driver.FindElement(By.Id("password-confirm")).SendKeys(account.Password);
         }
 
         private void SubmitPasswordForm()
         {
-            throw new NotImplementedException();
+            driver.FindElement(By.XPath("//button[@type='submit']")).Click();
+//            driver.FindElement(By.CssSelector("span.submit-button")).Click();
         }
 
         private void OpenMainPage()
