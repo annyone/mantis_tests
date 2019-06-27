@@ -17,9 +17,6 @@ namespace mantis_tests
             client.Host = "localhost";
             client.Credentials = new System.Net.NetworkCredential("mantis", "mantis");
             client.Connect();
-
-
-
         }
 
         public void BackupFile(String path)
