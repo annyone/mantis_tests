@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace mantis_tests
 {
-    class AuthTestBase : TestBase
+    public class AuthTestBase : TestBase
     {
         [SetUp]
         public void SetupLogin()
