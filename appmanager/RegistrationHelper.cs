@@ -35,7 +35,7 @@ namespace mantis_tests
         private void FillPasswordForm(string url, AccountData account)
         {
             driver.Url = url;
-            driver.FindElement(By.Id("realname")).SendKeys(account.Name);
+            driver.FindElement(By.Id("realname")).SendKeys(account.Username);
             driver.FindElement(By.Id("password")).SendKeys(account.Password);
             driver.FindElement(By.Id("password-confirm")).SendKeys(account.Password);
         }
@@ -58,7 +58,7 @@ namespace mantis_tests
 
         private void FillRegistrationForm(AccountData account)
         {
-            driver.FindElement(By.Name("username")).SendKeys(account.Name);
+            driver.FindElement(By.Name("username")).SendKeys(account.Username);
             driver.FindElement(By.Name("email")).SendKeys(account.Email);
         }
 

@@ -19,17 +19,23 @@ namespace mantis_tests
         public FtpHelper Ftp { get; private set; }
         public JamesHepler James { get; private set; }
         public MailHelper Mail { get; private set; }
+        public AuthHelper Auth { get; private set; }
+        public NavHelper Nav { get; private set; }
+        public ProjectHelper Project { get; private set; }
 
         private static ThreadLocal<AppManager> app = new ThreadLocal<AppManager>();
 
         private AppManager()
         {
             driver = new ChromeDriver(@"C:\Windows\SysWOW64");
-            baseURL = "http://localhost";
+            baseURL = "http://localhost/mantisbt-2.21.1/";
             Registration = new RegistrationHelper(this);
             Ftp = new FtpHelper(this);
             James = new JamesHepler(this);
             Mail = new MailHelper(this);
+            Auth = new AuthHelper(this);
+            Nav = new NavHelper(this, baseURL);
+            Project = new ProjectHelper(this, baseURL);
         }
 
         ~AppManager()
@@ -49,7 +55,7 @@ namespace mantis_tests
             if(! app.IsValueCreated)
             {
                 AppManager newInstance = new AppManager();
-                newInstance.driver.Url = "http://localhost/mantisbt-2.21.1/login_page.php";
+                newInstance.driver.Url = "http://localhost/mantisbt-2.21.1/";
                 app.Value = newInstance;  
             }
 
