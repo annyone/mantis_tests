@@ -22,6 +22,7 @@ namespace mantis_tests
         public AuthHelper Auth { get; private set; }
         public NavHelper Nav { get; private set; }
         public ProjectHelper Project { get; private set; }
+        public AdminHelper Admin { get; private set; }
 
         private static ThreadLocal<AppManager> app = new ThreadLocal<AppManager>();
 
@@ -36,6 +37,7 @@ namespace mantis_tests
             Auth = new AuthHelper(this);
             Nav = new NavHelper(this, baseURL);
             Project = new ProjectHelper(this, baseURL);
+            Admin = new AdminHelper(this, baseURL);
         }
 
         ~AppManager()

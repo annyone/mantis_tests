@@ -23,6 +23,12 @@ namespace mantis_tests
             }
             driver.Navigate().GoToUrl(baseURL);
         }
+
+        public void OpenLoginPage()
+        {
+            driver.Navigate().GoToUrl(baseURL + "login_page.php");
+        }
+
         public void OpenManagePage()
         {
             driver.Navigate().GoToUrl(baseURL+ "manage_overview_page.php");
