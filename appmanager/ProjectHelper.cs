@@ -28,6 +28,24 @@ namespace mantis_tests
         public void Delete(ProjectData project)
         {
             manager.Nav.OpenManageProjectPage();
+            SelectProject(project.Id);
+            DeleteProjectButton();
+            ConfirmProjectButton();
+        }
+
+        private void ConfirmProjectButton()
+        {
+            driver.FindElement(By.CssSelector("input[value='Удалить проект']")).Click();
+        }
+
+        private void DeleteProjectButton()
+        {
+            driver.FindElement(By.CssSelector("input[value='Удалить проект']")).Click();
+        }
+
+        private void SelectProject(string id)
+        {
+            driver.FindElement(By.CssSelector("a[href='manage_proj_edit_page.php?project_id=" + id + "']")).Click();
         }
 
         public void IsExist()
