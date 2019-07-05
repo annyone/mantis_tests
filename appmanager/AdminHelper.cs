@@ -1,9 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SimpleBrowser.WebDriver;
 using System.Text.RegularExpressions;
 
@@ -20,9 +17,9 @@ namespace mantis_tests
         public List<AccountData> GetAllAccounts()
         {
             List<AccountData> accounts = new List<AccountData>();
-            IWebDriver driver = OpenAppAndLogin();
-            driver.Url = baseURL + "manage_user_page.php";
-            IList<IWebElement> rows = driver.FindElements(By.CssSelector("div.table-responsive tbody tr"));
+            IWebDriver driver1 = OpenAppAndLogin();
+            driver1.Url = baseURL + "manage_user_page.php";
+            IList<IWebElement> rows = driver1.FindElements(By.CssSelector("div.table-responsive tbody tr"));
             foreach(IWebElement row in rows)
             {
                 IWebElement link = row.FindElement(By.TagName("a"));
@@ -39,23 +36,24 @@ namespace mantis_tests
 
         public void DeleteAccount (AccountData account)
         {
-            IWebDriver driver = OpenAppAndLogin();
-            driver.Url = baseURL + "manage_user_edit_page.php?user_id=" + account.Id;
-            driver.FindElement(By.CssSelector("input[value='Удалить учётную запись']")).Click();
-            driver.FindElement(By.CssSelector("input[value='Удалить учётную запись']")).Click();
+            IWebDriver driver1 = OpenAppAndLogin();
+            driver1.Url = baseURL + "manage_user_edit_page.php?user_id=" + account.Id;
+            driver1.FindElement(By.CssSelector("input[value='Удалить учётную запись']")).Click();
+            driver1.FindElement(By.CssSelector("input[value='Удалить учётную запись']")).Click();
+
         }
 
         private IWebDriver OpenAppAndLogin()
         {
-            IWebDriver driver = new SimpleBrowserDriver();
-            driver.Url = baseURL + "login_page.php";
+            IWebDriver driver1 = new SimpleBrowserDriver();
+            driver1.Url = baseURL + "login_page.php";
 
-            driver.FindElement(By.Name("username")).SendKeys("administrator");
-            driver.FindElement(By.XPath("//input[@type='submit']")).Click();
-            driver.FindElement(By.Name("password")).SendKeys("password");
-            driver.FindElement(By.XPath("//input[@type='submit']")).Click();
+            driver1.FindElement(By.Name("username")).SendKeys("administrator");
+            driver1.FindElement(By.XPath("//input[@type='submit']")).Click();
+            driver1.FindElement(By.Name("password")).SendKeys("password");
+            driver1.FindElement(By.XPath("//input[@type='submit']")).Click();
 
-            return driver;
+            return driver1;
         }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 using System.IO;
 
@@ -29,9 +24,9 @@ namespace mantis_tests
 
             AccountData account = new AccountData()
             {
-                Username = "TestUser8",
+                Username = "TestUser9",
                 Password = "Password",
-                Email = "testuser8@localhost.domain"
+                Email = "testuser9@localhost.domain"
             };
 
             List<AccountData> accounts = app.Admin.GetAllAccounts();
