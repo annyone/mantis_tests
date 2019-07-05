@@ -38,8 +38,8 @@ namespace mantis_tests
         {
             IWebDriver driver1 = OpenAppAndLogin();
             driver1.Url = baseURL + "manage_user_edit_page.php?user_id=" + account.Id;
-            driver1.FindElement(By.CssSelector("input[value='Удалить учётную запись']")).Click();
-            driver1.FindElement(By.CssSelector("input[value='Удалить учётную запись']")).Click();
+            driver1.FindElement(By.CssSelector("form[id='manage-user-delete-form'] input[type='submit']")).Click();
+            driver1.FindElement(By.CssSelector("form input[type='submit']")).Click();
 
         }
 

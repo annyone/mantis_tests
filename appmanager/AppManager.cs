@@ -18,6 +18,7 @@ namespace mantis_tests
         public NavHelper Nav { get; private set; }
         public ProjectHelper Project { get; private set; }
         public AdminHelper Admin { get; private set; }
+        public APIHelper Api { get; private set; }
 
         private static ThreadLocal<AppManager> app = new ThreadLocal<AppManager>();
 
@@ -33,6 +34,7 @@ namespace mantis_tests
             Nav = new NavHelper(this, baseURL);
             Project = new ProjectHelper(this, baseURL);
             Admin = new AdminHelper(this, baseURL);
+            Api = new APIHelper(this);
         }
 
         ~AppManager()

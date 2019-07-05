@@ -20,8 +20,6 @@ namespace mantis_tests
         [Test]
         public void AccountCreationTest()
         {
-            
-
             AccountData account = new AccountData()
             {
                 Username = "TestUser9",
