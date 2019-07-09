@@ -25,7 +25,7 @@ namespace mantis_tests
         private AppManager()
         {
             driver = new ChromeDriver(@"C:\Windows\SysWOW64");
-            baseURL = "http://localhost/mantisbt-2.21.1/";
+            baseURL = "http://localhost:8080/mantisbt-2.21.1/";
             Registration = new RegistrationHelper(this);
             Ftp = new FtpHelper(this);
             James = new JamesHepler(this);
@@ -54,7 +54,7 @@ namespace mantis_tests
             if(! app.IsValueCreated)
             {
                 AppManager newInstance = new AppManager();
-                newInstance.driver.Url = "http://localhost/mantisbt-2.21.1/";
+                newInstance.driver.Url = "http://localhost:8080/mantisbt-2.21.1/";
                 app.Value = newInstance;  
             }
 

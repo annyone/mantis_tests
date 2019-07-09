@@ -30,17 +30,17 @@ namespace mantis_tests
             manager.Nav.OpenManageProjectPage();
             SelectProject(project.Id);
             DeleteProjectButton();
-            ConfirmProjectButton();
+            ConfirmDeleteProjectButton();
         }
 
-        private void ConfirmProjectButton()
+        private void ConfirmDeleteProjectButton()
         {
             driver.FindElement(By.CssSelector("input[value='Удалить проект']")).Click();
         }
 
         private void DeleteProjectButton()
         {
-            driver.FindElement(By.CssSelector("input[value='Удалить проект']")).Click();
+            driver.FindElement(By.CssSelector("form[id='project-delete-form'] input[type='submit']")).Click();
         }
 
         private void SelectProject(string id)
@@ -50,11 +50,13 @@ namespace mantis_tests
 
         public void IsExist()
         {
-            if (driver.Url == baseURL + "manage_proj_page.php"
-                && !IsElementPresent(By.CssSelector("div[class='table-responsive']")))
+            AccountData account = new AccountData("administrator", "password");
+            mantis.Mantis.ProjectData[] projectsList = manager.Api.GetProjectList(account);
+
+            if (projectsList.Length==0)
             {
                 ProjectData project = new ProjectData((rnd.Next()).ToString(), (rnd.Next()).ToString());
-                Create(project);
+                manager.Api.CreateNewProject(account, project);
             }
             return;
         }

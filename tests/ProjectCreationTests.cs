@@ -17,7 +17,12 @@ namespace mantis_tests
         {
             List<ProjectData> oldList = ProjectData.GetAllFromDB();
 
-            ProjectData project = new ProjectData((rnd.Next()).ToString(), (rnd.Next()).ToString());
+            ProjectData project = new ProjectData()
+            {
+                Name = rnd.Next().ToString(),
+                Description = rnd.Next().ToString()
+            };
+
             app.Project.Create(project);
             List<ProjectData> newList = ProjectData.GetAllFromDB();
             oldList.Add(project);
